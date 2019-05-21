@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
+import NavBar from './Nav';
 import youtube from '../apis/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
@@ -29,6 +30,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="ui container">
+                <NavBar/>
                 <SearchBar onFormSubmit={this.onFormSubmit}/>
                 <div className="ui grid">
                     <div className="ui row">

@@ -1,7 +1,8 @@
 import youtube from '../apis/youtube';
 
 import {
-    FETCH_DEFAULT
+    FETCH_DEFAULT,
+    GO_HOME
 } from './types';
 
 
@@ -11,3 +12,7 @@ export const fetch_default = () => async dispatch => {
     })
     dispatch({type: FETCH_DEFAULT, payload: response.data});
 };
+
+export const goHome = () => dispatch => {
+    dispatch({type: GO_HOME});
+}
