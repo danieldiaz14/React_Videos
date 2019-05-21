@@ -13,7 +13,7 @@ class App extends React.Component {
 
     componentDidMount() {
         this.onFormSubmit('React Code');
-    }
+    };
     onFormSubmit = async (term) => {
         const response = await youtube.get('/search', {
             params: {

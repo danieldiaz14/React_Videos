@@ -1,21 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { fetch_default } from '../actions';
 
 class NavMenu extends React.Component {
-    state = {
-        selected: {
-            Home: true,
-            Previous: false
-        }
+
+    clickDefault = () => {
+        this.props.fetch_default();
     };
 
     render() {
-        const classSelected = this.state.selected.home ? {home: "active", previous: ""} : {home: "", previous: "active"};
         return (
             <div className="ui container">
                 <div className="ui inverted segment">
                     <div className="ui inverted secondary pointing menu">
-                        <p onClick={() => this.setState({selected: {Home: true, Previous: false}})} className={`${classSelected.home} item`}>Home</p>
-                        <p onClick={() => this.setState({Selected: {Home: false, Previous: true}})} className={`${classSelected.previous} item`}>Previous</p>
+                        <p  onClick={this.clickDefault}className={`active item`}>Home</p>
+                        <p  className="item">Previous</p>
                     </div>
                 </div>
             </div>
@@ -23,4 +23,10 @@ class NavMenu extends React.Component {
     }
 }
 
-export default NavMenu;
+const mapStateToProps = state => {
+    return {
+        selected: state.selected
+    }
+}
+
+export default connect(mapStateToProps, {fetch_default})(NavMenu);
