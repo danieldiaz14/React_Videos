@@ -1,22 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+class VideoDetail extends React.Component {
 
-const VideoDetail = ({video}) => {
-    if (!video) {
-        return <div>Loading...</div>
+    render() {
+
+        if(!Object.keys(this.props.selected).length) {
+            return <div>Loading...</div>
+        }
+        const {selected} = this.props;
+        const videoSrc = `https://www.youtube.com/embed/${selected.id.videoId}`;
+        return (
+            <div>
+                <div className="ui embed">
+                    <iframe title="Video Player" src={videoSrc}/>
+                </div>   
+                <div className="ui segment">
+                    <h4 className="ui header">{selected.snippet.title}</h4>
+                    <p>{selected.snippet.description}</p>
+                </div>
+            </div>
+        )
     }
-    const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
-    return (
-        <div>
-            <div className="ui embed">
-                <iframe title="Video Player" src={videoSrc} />
-            </div>
-            <div className="ui segment">
-                <h4 className="ui header">{video.snippet.title}</h4>
-                <p>{video.snippet.description}</p>
-            </div>
-        </div>
-    );
-};
+}
 
-export default VideoDetail;
+const mapStateToProps = state => {
+    return {
+        selected: state.selected
+    }
+}
+export default connect(mapStateToProps,{})(VideoDetail);
