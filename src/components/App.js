@@ -1,26 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import SearchBar from './SearchBar';
 import NavBar from './Nav';
 import youtube from '../apis/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 
-class App extends React.Component {
-    state = {
-        videos: [],
-        selectedVideo: null
-    };
+import {fetch_default} from '../actions/index';
 
+class App extends React.Component {
     componentDidMount() {
-        this.onFormSubmit('React Code');
-    };
-    onFormSubmit = async (term) => {
-        const response = await youtube.get('/search', {
-            params: {
-                q: term
-            }
-        });
-        this.setState({videos: response.data.items, selectedVideo: response.data.items[0]})
+        this.props.fetch_default();
     };
 
     onVideoSelect = (video) => {
@@ -35,15 +26,22 @@ class App extends React.Component {
                 <div className="ui grid">
                     <div className="ui row">
                         <div className="eleven wide column">
-                        <VideoDetail video={this.state.selectedVideo}/>
+                        <VideoDetail video={this.props.videos[0]}/>
                         </div>
                         <div className="five wide column">
-                        <VideoList onVideoSelect={this.onVideoSelect} videos={this.state.videos}/>
+                        <VideoList onVideoSelect={this.onVideoSelect} videos={this.props.videos}/>
                         </div>
                     </div>
                 </div>
             </div>
         )
     }
-}
-export default App;
+};
+
+const mapStateToProps = state => {
+    return {
+        videos: state.videos
+    }
+};
+
+export default connect(mapStateToProps,{fetch_default})(App);
