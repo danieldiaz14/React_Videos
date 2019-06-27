@@ -12,12 +12,16 @@ class App extends React.Component {
     componentDidMount() {
         this.props.fetch_default();
     };
+
+    onVideoSelect = (video) => {
+        console.log(video);
+    }
     
     render() {
         return (
             <div className="ui container">
                 <NavBar/>
-                <SearchBar onFormSubmit={this.onFormSubmit}/>
+                <SearchBar/>
                 <div className="ui grid">
                     <div className="ui row">
                         <div className="eleven wide column">

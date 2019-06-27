@@ -1,4 +1,8 @@
+import './SearchBar.css';
+import { fetch_search } from '../actions/index';
+
 import React from 'react';
+import { connect } from 'react-redux';
 
 class SearchBar extends React.Component {
     state = {
@@ -11,7 +15,7 @@ class SearchBar extends React.Component {
 
     onFormSubmit = (e) => {
         e.preventDefault();
-        this.props.onFormSubmit(this.state.term);
+        this.props.fetch_search(this.state.term);
     }
 
     render() {
@@ -26,6 +30,6 @@ class SearchBar extends React.Component {
             </div>
         )
     }
-}
+};
 
-export default SearchBar;
+export default connect(null,{fetch_search})(SearchBar);
