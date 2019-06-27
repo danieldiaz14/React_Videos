@@ -24,3 +24,7 @@ export const fetch_search = term => async dispatch => {
     });
     dispatch({type: FETCH_SEARCH, payload: response.data.items});
 };
+
+export const select_video = video => dispatch => {
+    dispatch({type: SELECT_VIDEO, payload: video});
+};

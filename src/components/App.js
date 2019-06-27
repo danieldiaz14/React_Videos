@@ -6,7 +6,7 @@ import NavBar from './Nav';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 
-import {fetch_default} from '../actions/index';
+import {fetch_default, select_video} from '../actions/index';
 
 class App extends React.Component {
     componentDidMount() {
@@ -14,7 +14,7 @@ class App extends React.Component {
     };
 
     onVideoSelect = (video) => {
-        console.log(video);
+        this.props.select_video(video);
     }
     
     render() {
@@ -44,4 +44,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps,{fetch_default})(App);
+export default connect(mapStateToProps,{fetch_default, select_video})(App);
