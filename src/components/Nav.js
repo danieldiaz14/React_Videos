@@ -10,7 +10,7 @@ class NavMenu extends React.Component {
     }
 
     clickDefault = () => {
-
+        this.props.fetch_default();
     };
 
     render() {
@@ -26,10 +26,4 @@ class NavMenu extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        selected: state.selected
-    }
-};
-
-export default connect(mapStateToProps, {fetch_default})(NavMenu);
+export default connect(null, {fetch_default})(NavMenu);

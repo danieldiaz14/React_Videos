@@ -6,7 +6,6 @@ import {
     SELECT_VIDEO
 } from './types';
 
-
 export const fetch_default = () => async dispatch => {
     const response = await youtube.get('/search', {
         params: {
