@@ -1,4 +1,3 @@
-import './SearchBar.css';
 import { fetch_search } from '../actions/index';
 
 import React from 'react';
@@ -22,9 +21,9 @@ class SearchBar extends React.Component {
         return (
             <div className="search-bar ui segment">
                 <form onSubmit={this.onFormSubmit} className="ui form">
-                    <div className="field">
-                        <label>Video Search</label>
-                        <input type="text" value={this.state.term} onChange={this.handleChange}/>
+                    <div className="ui huge fluid icon input">
+                        <input placeholder="Search for a youtube video!" type="text" value={this.state.term} onChange={this.handleChange}/>
+                        <i onClick={this.onFormSubmit} className="inverted circular search link icon"/>
                     </div>
                 </form>
             </div>

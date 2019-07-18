@@ -9,7 +9,7 @@ import {
 export const fetch_default = () => async dispatch => {
     const response = await youtube.get('/search', {
         params: {
-            q: 'League of Legends'
+            q: 'React Development'
         }
     });
     dispatch({type: FETCH_DEFAULT, payload: response.data.items});
