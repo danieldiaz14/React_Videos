@@ -1,4 +1,0 @@
-export const FETCH_DEFAULT = 'FETCH_DEFAULT';
-export const FETCH_SEARCH = 'FETCH_SEARCH';
-export const SELECT_VIDEO = 'SELECT_VIDEO';
-export const CLOSE_VIDEO = 'CLOSE_VIDEO';
