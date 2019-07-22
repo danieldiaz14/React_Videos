@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { fetch_default } from '../actions';
+import { fetch_default, close_video } from '../actions';
 
 class NavMenu extends React.Component {
 
-    state = {
-        selected: "Home"
-    }
-
-    clickDefault = () => {
+    clickDefault = e => {
+        e.preventDefault();
         this.props.fetch_default();
+    };
+
+    backToSearch = e => {
+        e.preventDefault();
+        this.props.close_video();
     };
 
     render() {
@@ -18,7 +20,9 @@ class NavMenu extends React.Component {
             <div className="ui container">
                 <div className="ui inverted segment">
                     <div className="ui inverted secondary pointing menu">
-                        <p  onClick={this.clickDefault} className={`active item`}>Home</p>
+                        <a  href="/" onClick={this.clickDefault} className="item">Home</a>
+                        <a href="/" onClick={this.backToSearch} className="item">Back to Search</a>
+                        <a target="_blank" rel='noreferrer noopener' href="https://danieldiaz14.github.io" className="item">Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -26,4 +30,4 @@ class NavMenu extends React.Component {
     }
 }
 
-export default connect(null, {fetch_default})(NavMenu);
+export default connect(null, {fetch_default, close_video})(NavMenu);

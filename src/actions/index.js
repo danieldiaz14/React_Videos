@@ -1,9 +1,9 @@
 import youtube from '../apis/youtube';
-
 import {
     FETCH_DEFAULT,
     FETCH_SEARCH,
-    SELECT_VIDEO
+    SELECT_VIDEO,
+    CLOSE_VIDEO,
 } from './types';
 
 export const fetch_default = () => async dispatch => {
@@ -26,4 +26,8 @@ export const fetch_search = term => async dispatch => {
 
 export const select_video = video => dispatch => {
     dispatch({type: SELECT_VIDEO, payload: video});
+};
+
+export const close_video = () => dispatch => {
+    dispatch({type: CLOSE_VIDEO, payload: ""})
 };

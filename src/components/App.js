@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import SearchBar from './SearchBar';
 import NavBar from './Nav';
 import VideoList from './VideoList';
+import VideoListSideBar from './VideoListSideBar';
 import VideoDetail from './VideoDetail';
 
 import {fetch_default, select_video} from '../actions/index';
@@ -15,23 +16,33 @@ class App extends React.Component {
 
     onVideoSelect = (video) => {
         this.props.select_video(video);
-    }
+    };
+
+    ifVideoSelected = () => {
+        if (Object.entries(this.props.selected).length > 0) {
+            return (
+                <div className="ui grid">
+                    <div className="ui row">
+                        <div className="eleven wide column">
+                            <VideoDetail/>
+                        </div>
+                        <div style={{border: "1px solid white"}}className="five wide column">
+                            <VideoListSideBar onVideoSelect={this.onVideoSelect} videos={this.props.videos.slice(0,4)}/>
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return <VideoList onVideoSelect={this.onVideoSelect} videos={this.props.videos}/>
+        }
+    };
     
     render() {
         return (
             <div className="ui container">
                 <NavBar/>
                 <SearchBar/>
-                <div className="ui grid">
-                    <div className="ui row">
-                        <div className="eleven wide column">
-                        <VideoDetail/>
-                        </div>
-                        <div className="five wide column">
-                        <VideoList onVideoSelect={this.onVideoSelect} videos={this.props.videos}/>
-                        </div>
-                    </div>
-                </div>
+                {this.ifVideoSelected()}
             </div>
         )
     }
