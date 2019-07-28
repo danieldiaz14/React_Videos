@@ -39,7 +39,7 @@ class App extends React.Component {
     
     render() {
         return (
-            <div className="ui container">
+            <div className="container">
                 <NavBar/>
                 <SearchBar/>
                 {this.ifVideoSelected()}

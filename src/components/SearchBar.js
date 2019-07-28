@@ -19,11 +19,14 @@ class SearchBar extends React.Component {
 
     render() {
         return (
-            <div className="search-bar ui segment">
-                <form onSubmit={this.onFormSubmit} className="ui form">
-                    <div className="ui huge fluid icon input">
-                        <input placeholder="Search for a youtube video!" type="text" value={this.state.term} onChange={this.handleChange}/>
-                        <i onClick={this.onFormSubmit} className="inverted circular search link icon"/>
+            <div className="jumbotron">
+                <h1 className="display-4">Search for a Youtube Video!</h1>
+                <form onSubmit={this.onFormSubmit} className="searchForm">
+                    <div className="input-group mb-3">
+                        <input className="form-control" placeholder="Search for a youtube video!" type="text" value={this.state.term} onChange={this.handleChange}/>
+                        <div className="input-group-append">
+                            <button className="btn btn-outline-secondary" type="button" onClick={this.onFormSubmit}>Search</button>
+                        </div>
                     </div>
                 </form>
             </div>
