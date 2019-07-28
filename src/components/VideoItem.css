@@ -1,7 +1,12 @@
 .column {
     border: 2px solid black;
     cursor: pointer;
+    transition-duration: 0.5s;
 };
+
+.column:hover {
+    transform: scale(1.05);
+}
 
 .video-item {
     display: flex !important;
@@ -11,4 +16,11 @@
 
 .video-item.item img {
     max-width: 180px;
+};
+
+
+@media (max-width: 767) {
+    body {
+        background-color: green;
+    }
 }

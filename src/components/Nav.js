@@ -1,3 +1,4 @@
+import './Nav.css';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -7,6 +8,7 @@ class NavMenu extends React.Component {
 
     clickDefault = e => {
         e.preventDefault();
+        console.log("I clicked home")
         this.props.fetch_default();
     };
 
@@ -17,14 +19,22 @@ class NavMenu extends React.Component {
 
     render() {
         return (
-            <div className="ui container">
-                <div className="ui inverted segment">
-                    <div className="ui inverted secondary pointing menu">
-                        <a  href="/" onClick={this.clickDefault} className="item">Home</a>
-                        <a href="/" onClick={this.backToSearch} className="item">Back to Search</a>
-                        <a target="_blank" rel='noreferrer noopener' href="https://danieldiaz14.github.io" className="item">Portfolio</a>
+            <div className="container">
+                <nav className="navbar navbar-dark bg-dark bg-primary">
+                    <div className="container">
+                        <ul className="list-inline">
+                            <li className="list-inline-item">
+                                <a href="/" className="navbar-brand" onClick={this.clickDefault}>Home</a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a href="/" className="navbar-brand" onClick={this.backToSearch}>Search</a>
+                            </li>
+                            <li className="list-inline-item">
+                                <a target="_blank" rel="noreferrer noopener" href="https://danieldiaz14.github.io" className="navbar-brand" onClick={this.clickDefault}>Portfolio</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                </nav>
             </div>
         );
     }
