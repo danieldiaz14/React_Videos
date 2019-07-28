@@ -33,7 +33,11 @@ class App extends React.Component {
                 </div>
             )
         } else {
-            return <VideoList onVideoSelect={this.onVideoSelect} videos={this.props.videos}/>
+            return (
+                <div className="container">
+                    <VideoList onVideoSelect={this.onVideoSelect} videos={this.props.videos}/>
+                </div>
+            ) 
         }
     };
     

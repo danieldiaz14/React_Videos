@@ -3,7 +3,7 @@ import React from 'react';
 
 const VideoItem = ({video, onVideoSelect}) => {
     return (
-        <div onClick={() => onVideoSelect(video)} className="column">
+        <div onClick={() => onVideoSelect(video)} className="col-sm my-3">
             <img className="ui medium image" alt={video.snippet.title} src={video.snippet.thumbnails.medium.url}/>
             <div className="content">
                 <div className="ui center aligned header">

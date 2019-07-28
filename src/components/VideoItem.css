@@ -1,17 +1,12 @@
-.column {
-    border: 2px solid black;
+.col-sm {
     cursor: pointer;
-    transition-duration: 0.5s;
-};
-
-.column:hover {
-    transform: scale(1.05);
+    transition-duration: 1s;
 }
 
-.video-item {
-    display: flex !important;
-    align-items: center !important;
-    cursor: pointer;
+.col-sm:hover {
+    border: 3px solid black;
+    transform: scale(1.03);
+    margin: 2px
 }
 
 .video-item.item img {
